@@ -1,0 +1,9 @@
+<%= form_with(model: task, local: true, url: task.new_record? ? category_tasks_path(@category) : category_task_path(@category, task)) do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.submit %>
+<% end %>
