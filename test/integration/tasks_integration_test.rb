@@ -24,8 +24,7 @@ class TasksIntegrationTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     patch category_task_path(category, task), params: { task: { title: "Updated Task", description: "Updated Task Description" } }
-    
-    # Redirect assertion
+
     assert_redirected_to category_path(category)
 
     follow_redirect!

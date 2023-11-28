@@ -1,9 +1,9 @@
 require "test_helper"
 
-  class TaskTest < ActiveSupport::TestCase
-    test "should be valid" do
-      task = Task.new(title: "Task 1", category_id: categories(:one).id)
-      assert task.valid?
+class TaskTest < ActiveSupport::TestCase
+  test "should be valid" do
+    task = Task.new(title: "Task 1", category_id: categories(:one).id)
+    assert task.valid?
   end
 
   test "title should be present" do

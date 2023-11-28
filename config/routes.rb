@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   resources :categories do
-    resources :tasks
+    resources :tasks do
+      collection do
+        get 'today'
+      end
+    end
   end
-end
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,5 +15,5 @@ end
   # get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
-# end
+  root "categories#index"
+ end

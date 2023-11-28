@@ -1,0 +1,12 @@
+<h1>Tasks Due Today</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= link_to task.title, category_task_path(@category, task) %>
+      (Due: <%= task.due_date.strftime('%m-%d-%Y') %>)
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back', category_tasks_path(@category) %>

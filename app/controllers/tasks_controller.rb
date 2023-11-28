@@ -34,13 +34,24 @@ class TasksController < ApplicationController
     end
   end
 
-  private
-  def set_category
-    @category = Category.find(params[:category_id])
+  def destroy
+    @task = Task.find(params[:id])
+    @category = @task.category
+    @task.destroy
+    redirect_to category_path(@category), notice: 'Task was successfully deleted.'
   end
 
+  def today
+    @tasks = @category.tasks.where(due_date: Date.today)
+  end
+
+  private
   def task_params
-    params.require(:task).permit(:title, :description, :category_id)
+    params.require(:task).permit(:title, :description, :due_date)
+  end
+
+  def set_category
+    @category = Category.find(params[:category_id])
   end
 
 end

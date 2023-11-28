@@ -5,5 +5,12 @@
   <%= form.label :description %>
   <%= form.text_area :description %>
 
+  <%= form.label :due_date %>
+  <%= form.date_field :due_date %>
+
   <%= form.submit %>
+
+  <% if task.persisted? %>
+    <%= link_to 'Delete Task', task_path(task), method: :delete, data: { confirm: 'Confirm Delete?' } %>
+  <% end %>
 <% end %>

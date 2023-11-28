@@ -1,5 +1,9 @@
 <h1><%= @category.name %></h1>
 
+<ul>
   <% @category.tasks.each do |task| %>
     <li><%= task.title %></li>
   <% end %>
+</ul>
+
+<%= link_to 'Back', categories_path %>
