@@ -1,6 +1,15 @@
 class TasksController < ApplicationController
 
-  before_action :set_category, only: [:new, :create]
+  before_action :set_category, only: [:index, :new, :create, :due_today]
+
+  def index
+    @tasks = @category.tasks
+  end
+
+  def show
+    @task = Task.find(params[:id])
+    @category = @task.category
+  end
 
   def new
     @task = Task.new
@@ -41,8 +50,8 @@ class TasksController < ApplicationController
     redirect_to category_path(@category), notice: 'Task was successfully deleted.'
   end
 
-  def today
-    @tasks = @category.tasks.where(due_date: Date.today)
+  def due_today
+    @tasks = @category.tasks.where(due_date: Date.today).order(:due_date)
   end
 
   private

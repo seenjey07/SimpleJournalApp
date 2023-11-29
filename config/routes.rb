@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :categories do
     resources :tasks do
       collection do
-        get 'today'
+        get 'today' => 'tasks#due_today', as: :due_today
       end
     end
   end

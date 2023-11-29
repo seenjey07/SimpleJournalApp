@@ -1,9 +1,19 @@
 <h1><%= @category.name %></h1>
 
-<ul>
+<div class="tasks_in_categories">
   <% @category.tasks.each do |task| %>
-    <li><%= task.title %></li>
+    <strong><p class="title"><%= task.title %></p></strong>
+    <p class="description"><%= task.description %></p>
+    <p class="due_date"><%= task.due_date %></p>
+      
+      <div class="task_actions">
+        <%= link_to 'Edit Task', edit_category_task_path(@category, task), :class => "edit_task" %> |
+        <%= button_to 'Delete Task', category_task_path(@category, task), :method => :delete, :data => { :confirm => 'Confirm delete?' }, :class => "delete_task" %>
+      </div>
   <% end %>
-</ul>
+</div>
 
-<%= link_to 'Back', categories_path %>
+<div class="buttons_container">
+  <%= link_to 'New Task', new_category_task_path(@category), :class => "new_task" %>
+  <%= link_to 'Back', categories_path, :class => "back_to_categories" %>
+</div>

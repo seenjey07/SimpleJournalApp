@@ -1,16 +1,35 @@
-<%= form_with(model: task, local: true, url: task.new_record? ? category_tasks_path(@category) : category_task_path(@category, task)) do |form| %>
-  <%= form.label :title %>
-  <%= form.text_field :title %>
+<%= form_with(model: [@category, @task], local: true, url: @task.persisted? ? category_task_path(@category, @task) : category_tasks_path(@category)) do |form| %>
+  
+  <div class="task_inputs_container">
+    <div class="title_field">
+      <strong><%= form.label :title %></strong>
+      <%= form.text_field :title %>
+    </div>
 
-  <%= form.label :description %>
-  <%= form.text_area :description %>
+    <div class="description_field">
+      <strong><%= form.label :description %></strong>
+      <%= form.text_area :description %>
+    </div>
 
-  <%= form.label :due_date %>
-  <%= form.date_field :due_date %>
+    <div class="due_date_field">
+      <strong><%= form.label :due_date %></strong>
+      <%= form.date_field :due_date %>
+    </div>
 
-  <%= form.submit %>
+    <div class="submit_button">
+      <%= form.submit %>
+    </div>
 
-  <% if task.persisted? %>
-    <%= link_to 'Delete Task', task_path(task), method: :delete, data: { confirm: 'Confirm Delete?' } %>
-  <% end %>
+    <div class="error" id="error_explanation">
+      <% if @task.errors.any? %>
+        <% @task.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="delete_task_container">
+    <%= button_to 'Delete', category_task_path(@category, @task), :method => :delete, :data => { :confirm => 'Confirm Delete?' }, :class => "delete_task" %>
+    </div>
+  </div>
 <% end %>

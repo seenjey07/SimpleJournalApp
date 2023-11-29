@@ -1,4 +1,19 @@
-<%= form_with(model: @category, url: category_path(@category), local: true) do |form| %>
+<%= form_with(model: @category, url: @category.new_record? ? categories_path : category_path(@category), local: true) do |form| %>
+
+<div class="new_category_input_container">
+  <div class="field">
+    <strong><%= form.label :name %></strong>
+    <%= form.text_field :name %>
+    <% if @category.errors[:name].present? %>
+      <p class="error"><%= @category.errors[:name].first %></p>
+    <% end %>
+  </div>
+
+  <div class="submit_button">
+    <%= form.submit %>
+  </div>
+</div>
+
   <% if @category.errors.any? %>
     <div id="error_explanation">
       <% @category.errors.full_messages.each do |message| %>
@@ -7,15 +22,4 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-    <% if @category.errors[:name].present? %>
-      <p class="error"><%= @category.errors[:name].first %></p>
-    <% end %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

@@ -1,7 +1,12 @@
 <h1><%= @task.title %></h1>
 
-<p><strong>Description:</strong> <%= @task.description %></p>
+<div class="task_show_details">
+  <p><strong>Description:</strong> <%= @task.description %></p>
+  <p><strong>Due Date:</strong> <%= @task.due_date %></p>
+</div>
 
-<%= link_to 'Edit', edit_category_task_path(@category, @task) %> |
-<%= link_to 'Delete Task', task_path(task), method: :delete, data: { confirm: 'Confirm Delete?' } %> |
-<%= link_to 'Back', category_path(@category) %>
+<div class="buttons_containers">
+  <%= link_to 'Edit', edit_category_task_path(@category, @task), :class => "edit_task" %>
+  <%= button_to 'Delete', category_task_path(@category, @task), :method => :delete, :data => { :confirm => 'Confirm Delete?' }, :class => "delete_task" %>
+  <%= link_to 'Back', category_path(@category), :class => "back_to_category" %>
+</div>

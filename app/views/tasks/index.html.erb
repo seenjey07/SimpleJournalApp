@@ -1,13 +1,13 @@
-<h1>Tasks</h1>
+# <h1>Tasks</h1>
 
-<%= link_to 'New Task', new_category_task_path(@category) %>
+# <div>
+#   <% @tasks.each do |task| %>
+#     <li>
+#       <%= link_to task.title, category_task_path(@category, task) %>
+#       (Due: <%= task.due_date.strftime('%B %d, %Y (%A)') %>)      
+#       <%= button_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Confirm Delete?' }, :class=>"delete_task" %>
+#     </li>
+#   <% end %>
+# </ul>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <%= link_to task.title, category_task_path(@category, task) %>
-      (Due: <%= task.due_date.strftime('%m-%d-%Y') %>)
-      <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
-  <% end %>
-</ul>
+# <%= link_to 'New Task', new_category_task_path(@category) %>

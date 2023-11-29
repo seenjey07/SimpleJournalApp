@@ -5,17 +5,6 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def edit
-  end
-
-  def update
-    if @category.update(category_params)
-      redirect_to @category, notice: 'Category was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
   def new
     @category = Category.new
   end
@@ -29,18 +18,41 @@ class CategoriesController < ApplicationController
       render :new
     end
   end
-  
+
   def show
     respond_to do |format|
       format.html
       format.json { render json: @category }
+    end
   end
-end
 
-private
+  def edit
+  end
+
+  def update
+    if @category.update(category_params)
+      redirect_to @category, notice: 'Category was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @category.destroy
+
+    respond_to do |format|
+      format.html { redirect_to categories_path, notice: 'Category was successfully deleted.' }
+      format.json { head :no_content }
+    end
+
+  end
+
+  private
+
   def category_params
     params.require(:category).permit(:name)
   end
+
   def set_category
     @category = Category.find(params[:id])
   end
