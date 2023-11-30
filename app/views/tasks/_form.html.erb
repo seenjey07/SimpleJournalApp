@@ -1,5 +1,5 @@
-<%= form_with(model: [@category, @task], local: true, url: @task.persisted? ? category_task_path(@category, @task) : category_tasks_path(@category)) do |form| %>
-  
+<%= form_with(model: [@category, @task], local: true, url: @task.persisted? ? category_task_path(@category, @task) : category_tasks_path(@category), action: @task.persisted? ? category_tasks_path(@category) : category_tasks_path(@category)) do |form| %>
+
   <div class="task_inputs_container">
     <div class="title_field">
       <strong><%= form.label :title %></strong>
@@ -28,8 +28,11 @@
       <% end %>
     </div>
 
-    <div class="delete_task_container">
-    <%= button_to 'Delete', category_task_path(@category, @task), :method => :delete, :data => { :confirm => 'Confirm Delete?' }, :class => "delete_task" %>
-    </div>
+    <% if @task.persisted? %>
+      <div class="delete_task_container">
+        <%= button_to 'Delete', category_task_path(@category, @task), :method => :delete, :class => "delete_task" %>
+      </div>
+    <% end %>
+    
   </div>
 <% end %>

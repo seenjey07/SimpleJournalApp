@@ -1,19 +1,16 @@
 class TasksController < ApplicationController
 
-  before_action :set_category, only: [:index, :new, :create, :due_today]
+  before_action :set_category, only: [:index, :new, :create, :show, :due_today, :edit, :update, :destroy]
 
   def index
     @tasks = @category.tasks
   end
 
-  def show
-    @task = Task.find(params[:id])
-    @category = @task.category
-  end
-
   def new
-    @task = Task.new
+    @category = Category.find(params[:category_id])
+    @task = @category.tasks.build
   end
+  
 
   def create
     @task = @category.tasks.build(task_params)
@@ -23,10 +20,16 @@ class TasksController < ApplicationController
         format.html { redirect_to category_path(@category), notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
+        puts @task.errors.full_messages
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def show
+    @task = Task.find(params[:id])
+    @category = @task.category
   end
 
   def edit

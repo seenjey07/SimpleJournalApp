@@ -7,7 +7,7 @@
       <%= link_to 'View Tasks Due Today', due_today_category_tasks_path(category), class: "due_tasks" %>
         <div class="Category_actions">
           <%= link_to 'Edit', edit_category_path(category), class: "edit_category" %>
-          <%= link_to 'Delete', category_path(category), method: :delete, class: "delete_category" %>
+          <%= button_to 'Delete', category_path(category), method: :delete, class: "delete_category" %>
         </div>
     </li>
   <% end %>
