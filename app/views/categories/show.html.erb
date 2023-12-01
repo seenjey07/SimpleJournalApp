@@ -7,7 +7,7 @@
     <p class="due_date"><%= task.due_date %></p>
       
       <div class="task_actions">
-        <%= link_to 'Edit Task', edit_category_task_path(@category, task), :class => "edit_task" %> |
+        <%= link_to 'Edit Task', edit_category_task_path(@category, task), :class => "edit_task" %> 
         <%= button_to 'Delete Task', category_task_path(@category, task), :method => :delete, :data => { :confirm => 'Confirm delete?' }, :class => "delete_task" %>
       </div>
   <% end %>

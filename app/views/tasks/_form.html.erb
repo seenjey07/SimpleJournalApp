@@ -1,4 +1,4 @@
-<%= form_with(model: [@category, @task], local: true, url: @task.persisted? ? category_task_path(@category, @task) : category_tasks_path(@category), action: @task.persisted? ? category_tasks_path(@category) : category_tasks_path(@category)) do |form| %>
+<%= form_with(model: [@category, @task], local: true, url: @task.persisted? ? category_task_path(@category, @task) : category_tasks_path(@category), action: @task.persisted? ? category_tasks_path(@category) : category_tasks_path(@category), data: {turbo: false}) do |form| %>
 
   <div class="task_inputs_container">
     <div class="title_field">
@@ -20,7 +20,7 @@
       <%= form.submit %>
     </div>
 
-    <div class="error" id="error_explanation">
+    <div class="error">
       <% if @task.errors.any? %>
         <% @task.errors.full_messages.each do |message| %>
           <%= message %>

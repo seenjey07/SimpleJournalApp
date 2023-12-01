@@ -5,15 +5,17 @@ class TasksIntegrationTest < ActionDispatch::IntegrationTest
     category = categories(:one)
     initial_task_count = Task.count
 
-    post category_tasks_path(category), params: { task: { title: "New Task", description: "Task Description" } }
+    post category_tasks_path(category), params: { task: { title: "New Task", description: "Task Description", due_date: Date.today } }
 
-    assert_equal initial_task_count + 1, Task.count
+    assert_redirected_to category_path(category)
+    category.reload
+    assert_equal initial_task_count + 1, category.tasks.count
 
     get new_category_task_path(category)
     assert_response :success
-
+  
     assert_difference('Task.count', 1) do
-      post category_tasks_path(category), params: { task: { title: "Another Task", description: "Another Task Description" } }
+      post category_tasks_path(category), params: { task: { title: "Another Task", description: "Another Task Description", due_date: Date.today } }
     end
 
     follow_redirect!
@@ -23,12 +25,12 @@ class TasksIntegrationTest < ActionDispatch::IntegrationTest
 
   test "can edit a task" do
     category = categories(:one)
-    task = Task.create(title: "Task to Edit", description: "Task Description", category: category)
+    task = Task.create(title: "Task to Edit", description: "Task Description", due_date: Date.today, category: category)
 
     get edit_category_task_path(category, task)
     assert_response :success
 
-    patch category_task_path(category, task), params: { task: { title: "Updated Task", description: "Updated Task Description" } }
+    patch category_task_path(category, task), params: { task: { title: "Updated Task", description: "Updated Task Description", due_date: Date.today } }
 
     assert_redirected_to category_path(category)
 

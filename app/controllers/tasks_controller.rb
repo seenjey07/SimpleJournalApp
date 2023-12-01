@@ -20,7 +20,6 @@ class TasksController < ApplicationController
         format.html { redirect_to category_path(@category), notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
-        puts @task.errors.full_messages
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
