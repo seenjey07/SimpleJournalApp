@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/home'
   resources :categories do
     resources :tasks do
       collection do
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
       end
     end
   end
+  root 'pages#home'
+end
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,5 +18,5 @@ Rails.application.routes.draw do
   # get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "categories#index"
- end
+#   root "categories#index"
+#  end

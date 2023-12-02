@@ -28,9 +28,6 @@ class CategoryTest < ActiveSupport::TestCase
     assert task.save
     assert task.persisted?
 
-    # assert task.valid?, "Task is not valid: #{task.errors.full_messages.join(', ')}"
-    # assert task.save, "Task could not be saved: #{task.errors.full_messages.join(', ')}"  
-
     assert_equal 1, category.tasks.count
     assert_equal task, category.tasks.first
   end
