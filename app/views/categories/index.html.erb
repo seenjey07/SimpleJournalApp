@@ -1,18 +1,38 @@
-<h1>Categories</h1>
+<div class="hi_user">
+  <h3>Hello, </h3> #lalagyan name ng signed in user
+<div>
 
-<div class="categories_list">
-  <% @categories.each do |category| %>
-    <li>
-      <%= link_to category.name, category_path(category) %>
-      <%= link_to 'View Tasks Due Today', due_today_category_tasks_path(category), class: "due_tasks" %>
-        <div class="Category_actions">
-          <%= link_to 'Edit', edit_category_path(category), class: "edit_category" %>
-          <%= button_to 'Delete', category_path(category), method: :delete, class: "delete_category" %>
-        </div>
-    </li>
-  <% end %>
-</div>
+<div class="categories_notepad_container">
+  <div class="categories_container"> 
+    <h3>Categories</h3>
 
-<div class="new_category_link_container">
-  <%= link_to 'New Category', new_category_path, :class=>"new_category" %>
+    <% if @categories.empty? %>
+      <p>To start, create a new Category.</p>
+    <% end %>
+
+    <div class="categories_list">
+      <% @categories.each do |category| %>
+        <li>
+          <%= link_to category.name, category_path(category) %>
+          <%= link_to 'View Tasks Due Today', due_today_category_tasks_path(category), :class=>"due_tasks" %>
+            <div class="category_actions">
+              <%= link_to 'Edit', edit_category_path(category), :class =>"edit_category" %>
+              <%= button_to 'Delete', category_path(category), method: :delete, :class=>"delete_category" %>
+            </div>
+        </li>
+      <% end %>
+    </div>
+
+    <div id="new_category_link_container">
+      <%= link_to 'New Category', new_category_path, :class=>"new_category" %>
+    </div>
+  </div>
+
+  <div class="notepad_container">
+    <h3>Your Notepad</h3>
+    <form>
+      <textarea class="notepad_textarea" placeholder="Write your thoughts here..."></textarea>
+      <button class="notepad_button">Save</button>
+    </form>
+   </div>
 </div>

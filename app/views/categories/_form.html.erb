@@ -1,7 +1,7 @@
 <%= form_with(model: @category, url: @category.persisted? ? category_path(@category) : categories_path, local: true, data: { turbo: false }) do |form| %>
     
   <div class="new_category_input_container">
-    <div class="field">
+    <div class="category_input">
       <strong><%= form.label :name %></strong>
       <%= form.text_field :name %>
     </div>
@@ -12,7 +12,7 @@
   </div>
 
   <% if @category.errors.any? %>
-    <div id="error_explanation">
+    <div class="error_explanation">
       <% @category.errors.full_messages.each do |message| %>
         <%= message %>
       <% end %>

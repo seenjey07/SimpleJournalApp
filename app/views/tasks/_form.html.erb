@@ -20,19 +20,18 @@
       <%= form.submit %>
     </div>
 
-    <div class="error">
+    <div id="error_explanation">
       <% if @task.errors.any? %>
         <% @task.errors.full_messages.each do |message| %>
           <%= message %>
         <% end %>
       <% end %>
     </div>
+  </div>
+<% end %>
 
-    <% if @task.persisted? %>
-      <div class="delete_task_container">
-        <%= button_to 'Delete', category_task_path(@category, @task), :method => :delete, :class => "delete_task" %>
-      </div>
-    <% end %>
-    
+<% if @task.persisted? %>
+  <div class="delete_task_container">
+    <%= button_to 'Delete', category_task_path(@category, @task), :method => :delete, :class => "delete_task" %>
   </div>
 <% end %>

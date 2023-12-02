@@ -1,6 +1,11 @@
 <h1><%= @category.name %></h1>
 
 <div class="tasks_in_categories">
+
+  <% if @category.tasks.empty? %>
+    <p>Create your first task.</p>
+  <% end %>
+
   <% @category.tasks.each do |task| %>
     <strong><p class="title"><%= task.title %></p></strong>
     <p class="description"><%= task.description %></p>
