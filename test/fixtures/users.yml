@@ -1,0 +1,36 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: Juan
+  middle_name: Tamad
+  last_name: Dela Cruz
+  date_of_birth: 1990-01-01
+  email: juan_tdc@example.com
+  password_digest: <%= BCrypt::Password.create('Password_123') %>
+
+two:
+  first_name: Maria
+  middle_name: Filipina
+  last_name: Makiling
+  date_of_birth: 1992-02-02
+  email: maria_fm@example.com
+  password_digest: <%= BCrypt::Password.create('Secure_Pass1') %>
+
+
+
+
+# one:
+#   first_name: MyString
+#   middle_name: MyString
+#   last_name: MyString
+#   date_of_birth: 2023-12-04
+#   email: MyString
+#   password_digest: MyString
+
+# two:
+#   first_name: MyString
+#   middle_name: MyString
+#   last_name: MyString
+#   date_of_birth: 2023-12-04
+#   email: MyString
+#   password_digest: MyString

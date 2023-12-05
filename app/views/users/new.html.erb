@@ -1,0 +1,33 @@
+<h1>Register with TasksMaster!</h1>
+
+  <%= form_with(model: @user, url: users_path, local: true) do |form| %>
+   
+    <div class="registration_form">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, required: true %>
+
+        <%= form.label :middle_name %>
+        <%= form.text_field :middle_name %>
+
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, required: true %>
+
+        <%= form.label :date_of_birth %>
+        <%= form.date_field :date_of_birth, required: true %>
+
+        <%= form.label :email %>
+        <%= form.email_field :email, required: true %>
+
+        <%= form.label :password %>
+        <%= form.password_field :password, required: true %>
+
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, required: true %>
+
+        <%= form.submit 'Register' %>
+    </div>
+  <% end %>
+
+  <div class="login">
+    <%= link_to 'Already have an account?', login_path %>
+  </div>
