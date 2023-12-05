@@ -53,6 +53,15 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'Tamad', user.middle_name
     assert_equal 'Dela Cruz', user.last_name
   end
+
+  test 'displays error messages for blank or incomplete login form' do
+    user = create(:user)
+
+    get new_session_path
+    assert_response :success
+
+    post sessions_path, params: { session: { username_or_email: '', password: '' } }
+    assert_redirected_to new_session_path
+    assert_equal 'Please type your username or email and your password.', flash[:alert]
 end
-
-
+end

@@ -1,27 +1,9 @@
-<body>
+  <div class="site_info">
+    <p>Welcome to TasksMaster, your personal productivity companion designed to simplify your daily tasks and boost your efficiency.</p>
+    <p>TasksMaster is not just a to-do list app; it's your ultimate task management solution. </p>
+  </div>
 
-  <section class="site_info">
-    <p>Welcome to TasksMaster, your personal productivity companion designed to simplify your daily tasks and boost your efficiency. Say goodbye to forgetfulness and hello to a more organized and productive you.</p>
-    <p>TasksMaster is not just a to-do list app; it's your ultimate task management solution. Whether you're a busy professional, a student with deadlines, or someone who simply wants to stay on top of their daily responsibilities, our app has got you covered.</p>
-  </section>
-
-#dito yung para sa registration and log-in, gawan ko pa ng model and controller, kunwari eto muna para may laman
-
-<section class="login_register_section">
-  <h3>Login</h3>
-    <form action="/login" method="post">
-      <input type="text" name="username" placeholder="Username" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input type="submit" value="Login">
-    </form>
-  <h3>Register</h3>
-    <form action="/register" method="post">
-      <input type="text" name="username" placeholder="Username" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-      <input type="submit" value="Register">
-    </form>
-</section>
-
-</body>
+  <div class="login_register_section">
+      <a href="<%= new_session_path %>" class="login_link">Login</a>
+      <a href="<%= new_user_path %>" class="register_link">Register</a>
+  </div>

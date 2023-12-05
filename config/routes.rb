@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'pages/home'
 
   resources :users, only: [:new, :create], path_names: { new: 'signup' }
+  resources :sessions, only: [:new, :create, :destroy], path_names: { new: 'login', destroy: 'logout' }
 
   resources :categories do
     resources :tasks do
