@@ -9,7 +9,7 @@
   <% @category.tasks.each do |task| %>
     <strong><p class="title"><%= task.title %></p></strong>
     <p class="description"><%= task.description %></p>
-    <p class="due_date"><%= task.due_date %></p>
+    <p class="due_date"><%= task.due_date.strftime("%B %d, %Y, %A") %></p>
       
       <div class="task_actions">
         <%= link_to 'Edit Task', edit_category_task_path(@category, task), :class => "edit_task" %> 

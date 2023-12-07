@@ -66,6 +66,10 @@ button {
   height: 76%;
 }
 
+.site_info_container {
+  padding: 5px 45px 5px 45px;
+}
+
 .home_options {
   font-size: 11pt;
   font-weight: bold;

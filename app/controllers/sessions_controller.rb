@@ -2,13 +2,11 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def create
-    puts "params: #{params.inspect}"
-    
-    username_or_email = params[:session][:username_or_email].downcase
+  def create    
+    username_or_email = session_params[:username_or_email]
     user = User.find_by(username: username_or_email) || User.find_by(email: username_or_email)
 
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(session_params[:password])
       session[:username] = user.username
       redirect_to categories_path
     else
@@ -22,3 +20,9 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 end
+
+private
+def session_params
+  params.permit(:username_or_email, :password, :authenticity_token, :commit)
+end
+
