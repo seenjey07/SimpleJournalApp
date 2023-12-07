@@ -1,20 +1,20 @@
 <div class="login_container">
   <h3>Login</h3>
 
-  <div class="login_container">
+  <div class="login_form_container">
     <%= form_with(url: sessions_path, local: true) do |form| %>
       <%= form.label :username_or_email %>
-      <%= form.text_field :username_or_email, required: true %>
+      <%= form.text_field :username_or_email, required: true, :class => "login_input" %>
 
       <%= form.label :password %>
-      <%= form.password_field :password, required: true %>
+      <%= form.password_field :password, required: true, :class => "login_input" %>
 
-      <%= form.submit 'Login' %>
+      <%= form.submit 'Login', :id => "login_button" %>
     <% end %>
   </div>
 
-  <div class="login">
-    <%= link_to "Don't have an account?", new_user_path %>
+  <div class="register">
+    <%= link_to "Don't have an account yet?", new_user_path %>
   </div>
 
 </div>

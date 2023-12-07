@@ -3,6 +3,13 @@ header {
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+  color: white;
+  box-shadow: wheat 0 0 4px 1px;
+}
+
+h3 {
+  margin: 5px;
+  padding: 5px;
 }
 
 img {
@@ -14,14 +21,17 @@ img {
 body {
   margin: 0 auto;
   overflow: hidden;
+  background-color: peru;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-footer {
-  display: flex;
-  position: absolute;
-  justify-content: flex-start;
-  margin-bottom: 0;
+.footer {
   padding: 2px;
+  font-size: 8pt;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
 }
 
 button {
@@ -30,6 +40,133 @@ button {
   cursor: pointer;
   color: blue;
   text-decoration: underline;
+}
+
+.login_video_containers {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-gap: 5px;
+  margin: 20px 19px 0 15px;
+  height: 78vh;
+  align-items: flex-start;
+}
+
+.site_info_container,
+.video_container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 11pt;
+  background-color: burlywood;
+  box-shadow: navajowhite 1px 1px 5px 1px;
+  padding: 5px;
+  height: 76%;
+}
+
+.home_options {
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+.register_link,
+.login_link {
+  font-weight: bold;
+  font-size: 9pt;
+}
+
+#login_button,
+#register_button {
+  margin-top: 10px;
+  font-weight: bold;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.register_link {
+  padding-top: 5px;
+}
+
+video {
+  width: 95%;
+  height: 80%;
+}
+
+.login_container,
+.registration_container {
+  margin: 50px auto;
+  width: fit-content;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 7px;
+  background-color: navajowhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 11pt;
+  box-shadow: wheat 0 0 4px 4px;
+}
+
+.registration_container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+  width: 400px;
+  height: 480px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.login_form_container,
+.registration_form_container {
+  font-size: 10pt;
+  font-weight: bold;
+  border: 2px double white;
+  border-radius: 10px;
+  margin: 10px 20px 10px 20px;
+  padding: 12px;
+}
+
+.login_input {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  height: 15px;
+  margin: 5px;
+  padding: 5px;
+  font-size: 10pt;
+}
+
+.registration_input {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  height: 12px;
+  margin: 3px;
+  padding: 3px;
+  font-size: 10pt;
+}
+
+.register,
+.login {
+  cursor: pointer;
+  font-size: 10pt;
+  margin-top: 10pt;
+}
+
+.register_name {
+  display: flex;
+  padding-bottom: 2px;
 }
 
 .hi_user {

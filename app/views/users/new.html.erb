@@ -1,36 +1,34 @@
 <div class="registration_container">
   <h3>Register with TasksMaster!</h3>
 
-    <%= form_with(model: @user, url: users_path, local: true) do |form| %>
-    
-      <div class="registration_form">
-          <%= form.label :first_name %>
-          <%= form.text_field :first_name, required: true %>
+    <div class="registration_form_container">
+      <%= form_with(model: @user, url: users_path, local: true) do |form| %>
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, required: true, :class => "registration_input" %>
 
-          <%= form.label :middle_name %>
-          <%= form.text_field :middle_name %>
+        <%= form.label :middle_name %>
+        <%= form.text_field :middle_name, :class => "registration_input" %>
 
-          <%= form.label :last_name %>
-          <%= form.text_field :last_name, required: true %>
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, required: true, :class => "registration_input" %>
+        <%= form.label :date_of_birth %>
+        <%= form.date_field :date_of_birth, required: true, :class => "registration_input" %>
 
-          <%= form.label :date_of_birth %>
-          <%= form.date_field :date_of_birth, required: true %>
+        <%= form.label :email %>
+        <%= form.email_field :email, required: true, :class => "registration_input" %>
 
-          <%= form.label :email %>
-          <%= form.email_field :email, required: true %>
+        <%= form.label :username %>
+        <%= form.text_field :username, required: true, :class => "registration_input" %>
 
-          <%= form.label :username %>
-          <%= form.text_field :username, required: true %>
+        <%= form.label :password %>
+        <%= form.password_field :password, required: true, :class => "registration_input" %>
 
-          <%= form.label :password %>
-          <%= form.password_field :password, required: true %>
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, required: true, :class => "registration_input" %>
 
-          <%= form.label :password_confirmation %>
-          <%= form.password_field :password_confirmation, required: true %>
-
-          <%= form.submit 'Register' %>
-      </div>
-    <% end %>
+        <%= form.submit 'Register', :id => "register_button" %>
+      <% end %>
+    </div>
 
     <div class="login">
       <%= link_to 'Already have an account?', new_session_path %>

@@ -1,9 +1,17 @@
-  <div class="site_info">
-    <p>Welcome to TasksMaster, your personal productivity companion designed to simplify your daily tasks and boost your efficiency.</p>
-    <p>TasksMaster is not just a to-do list app; it's your ultimate task management solution. </p>
-  </div>
+  <div class="login_video_containers">    
+    <div class="site_info_container">
+      <p>Welcome to TasksMaster, your personal productivity companion designed to simplify your daily tasks and boost your efficiency. </p>
+      <p> TasksMaster is not just a to-do list app; it's your ultimate task management solution. </p>
 
-  <div class="login_register_section">
-      <a href="<%= new_session_path %>" class="login_link">Login</a>
-      <a href="<%= new_user_path %>" class="register_link">Register</a>
+      <p class="home_options">Let's get started!</p>
+        <a href="<%= new_session_path %>" class="login_link">Login</a>
+        <a href="<%= new_user_path %>" class="register_link">Register</a>
+    </div>
+
+    <div class="video_container">
+      <video autoplay muted loop>
+        <source src="TaskMasterVideo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
