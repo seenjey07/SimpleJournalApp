@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:new, :create], path_names: { new: 'signup' }
-  resources :sessions, only: [:new, :create, :destroy], path_names: { new: 'login', destroy: 'logout' }
+  resources :sessions, only: [:new, :create], path_names: { new: 'login'} do
+    collection do
+      delete 'logout' => 'sessions#destroy'
+    end
+  end
 
   resources :categories do
     resources :tasks do
@@ -10,9 +14,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
   root 'pages#home'
 end
-
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
