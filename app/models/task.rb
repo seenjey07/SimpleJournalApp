@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
-  validates :title, :description, :due_date, presence: true
   belongs_to :category
+  has_one :user, through: :category
+  validates :title, :description, :due_date, presence: true
 end

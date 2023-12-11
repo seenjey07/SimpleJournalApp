@@ -7,8 +7,9 @@ class SessionsController < ApplicationController
     user = User.find_by(username: username_or_email) || User.find_by(email: username_or_email)
 
     if user && user.authenticate(session_params[:password])
-      session[:username] = user.username
-      redirect_to categories_path
+      session[:user_username] = user.username
+      session[:user_email] = user.email
+      redirect_to categories_path(current_user)
     else
       flash.now[:alert] = 'Invalid login details. Please try again.'
       render 'new'
@@ -16,7 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:username] = nil
+    session[:user_username] = nil
+    session[:user_email] = nil
     redirect_to root_path
   end
 end

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_username])
+    @current_user ||= User.find_by("username = ? OR email = ?", session[:user_username], session[:user_email])
   end
 
   def logged_in?

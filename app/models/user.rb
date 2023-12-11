@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :categories, foreign_key: :username, primary_key: :username
+  has_many :tasks, through: :categories
   has_secure_password
 
   validates :email, :username, presence: true
