@@ -1,14 +1,12 @@
 <%= form_with(model: @category, url: @category.persisted? ? category_path(@category) : categories_path, local: true, data: { turbo: false }) do |form| %>
     
-  <div class="new_category_input_container">
-    <div class="category_input">
+  <div class="new_category_container">
+    <div>
       <strong><%= form.label :name %></strong>
-      <%= form.text_field :name %>
+      <%= form.text_field :name, :id => 'category_input' %>
     </div>
 
-    <div class="submit_button">
-      <%= form.submit %>
-    </div>
+      <%= form.submit "Create Category", :id => "create_category_button" %>
   </div>
 
   <% if @category.errors.any? %>

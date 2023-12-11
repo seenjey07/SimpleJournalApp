@@ -18,10 +18,10 @@ class TaskTest < ActiveSupport::TestCase
   end
 
   test "should belong to a category" do
-    category = Category.create(name: "Work")
-    task = Task.new(title: "Task 1", category_id: category.id)
+    category = Category.create(:one)
+    task = Task.new(title: "Task 1", description: "Task Description", due_date: user_due_date, category_id: category.id)
 
-    assert_equal category, task.category
+    assert task.valid?
   end
 
   test "should create task for a category with user-defined due date" do

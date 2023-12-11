@@ -1,30 +1,31 @@
 <div class="hi_user">
   <h3>Hello, <%= current_user.first_name %>!</h3>
-</div>
+  <%= button_to "Logout", logout_sessions_path, method: :delete, :class => 'logout' %>
+  </div>
 
 <div class="categories_notepad_container">
   <div class="categories_container"> 
     <h3>Categories</h3>
 
     <% if @categories.empty? %>
-      <p>To start, create a new Category.</p>
+      <p>To start, create a New Category.</p>
     <% end %>
 
     <div class="categories_list">
       <% @categories.each do |category| %>
         <li>
-          <%= link_to category.name, category_path(category) %>
-          <%= link_to 'View Tasks Due Today', due_today_category_tasks_path(category), :class=>"due_tasks" %>
-            <div class="category_actions">
-              <%= link_to 'Edit', edit_category_path(category), :class =>"edit_category" %>
-              <%= button_to 'Delete', category_path(category), method: :delete, :class=>"delete_category" %>
+          <%= link_to category.name, category_path(category), :id => "category_name" %>
+          <div class="category_actions">
+              <%= link_to 'Tasks Due Today', due_today_category_tasks_path(category), :id=>"due_tasks" %> |
+              <%= link_to 'Edit', edit_category_path(category), :id =>"edit_category" %> |
+              <%= button_to 'Delete', category_path(category), method: :delete, :id=>"delete_category" %>
             </div>
         </li>
       <% end %>
     </div>
 
-    <div id="new_category_link_container">
-      <%= link_to 'New Category', new_category_path, :class=>"new_category" %>
+    <div>
+      <%= link_to 'New Category', new_category_path, :id=>"new_category" %>
     </div>
   </div>
 
@@ -36,7 +37,4 @@
     </form>
    </div>
 
-  <div class="logout">
-    <%= button_to "Logout", logout_sessions_path, method: :delete %>
-  </div> 
 </div>

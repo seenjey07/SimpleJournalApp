@@ -87,6 +87,16 @@ button {
   font-weight: bold;
   padding: 4px;
   border-radius: 4px;
+  justify-self: center;
+}
+
+#create_category_button {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 10px;
+  font-weight: bold;
+  padding: 4px;
+  border-radius: 4px;
 }
 
 .register_link {
@@ -132,7 +142,9 @@ form {
 }
 
 .login_form_container,
-.registration_form_container {
+.registration_form_container, 
+.new_category_container,
+.edit_category_container  {
   font-size: 10pt;
   font-weight: bold;
   border: 2px double white;
@@ -141,7 +153,13 @@ form {
   padding: 12px;
 }
 
-.login_input {
+.new_category_container,
+.edit_category_container {
+  margin: 30px;
+}
+
+.login_input,
+#category_input {
   border: none;
   border-radius: 5px;
   width: 200px;
@@ -168,14 +186,38 @@ form {
   margin-top: 10pt;
 }
 
+#back_to_category,
+.back_to_categories {
+  padding-left: 10px;
+}
+
 .register_name {
   display: flex;
   padding-bottom: 2px;
 }
 
 .hi_user {
+  margin-top: 10px;
   padding: 7px;
-  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 11pt;
+  font-weight: bold;
+  color: yellow;
+  background-color: rgb(139, 14, 14);
+}
+
+.logout {
+  text-decoration: underline wheat;
+  font-size: 10pt;
+  font-weight: bold;
+  color: white;
+  transition: color 0.5s;
+}
+
+.logout:hover{
+  color: cornflowerblue;
 }
 
 .categories_notepad_container {
@@ -190,7 +232,8 @@ form {
 .categories_container,
 .notepad_container {
   padding: 3px;
-  overflow: auto;
+  font-size: 12pt;
+  font-weight: bold;
 }
 
 .new_category_input_container {
@@ -207,7 +250,7 @@ form {
 .notepad_textarea {
   width: 85%;
   height: 250px;
-  font-family: "Times New Roman";
+  font-family: 'Cambria';
   font-size: 11pt;
   border-radius: 8px;
   margin: 5px;
@@ -226,18 +269,80 @@ form {
   margin: 1px;
 }
 
+.categories_list {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0 15px 0;
+  padding: 10px 5px 20px 5px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border: 1mm solid black;
+  height: 50%;
+  overflow: auto;
+}
+
+li {
+  list-style: none;
+  padding: 2px;
+}
+
+#category_name {
+  font-size: 12pt;
+  color: white;
+  text-decoration: none;
+  font-family: "Lucida Sans";
+  transition: color 0.5s;
+}
+
+#category_name:hover {
+  color: red;
+}
+
+.category_actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-weight: normal;
+  font-size: 10pt;
+}
+
+#delete_category,
+#edit_category,
+#due_tasks {
+  font-size: 10pt;
+  color: darkmagenta;
+  padding-left: 1px;
+  text-decoration: none;
+}
+
+#delete_category:hover,
+#edit_category:hover,
+#due_tasks:hover {
+  text-decoration: underline;
+}
+
+#new_category {
+  color: white;
+  font-size: 10pt;
+  transition: color 0.5s;
+  background-color: darkcyan;
+  padding: 4px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+#new_category:hover {
+  color: black;
+}
+
 .category_input {
   padding-right: 10px;
 }
 
-.submit_button {
-}
-
 .error_explanation {
+  font-weight: normal;
+  color:yellow;
 }
 
-.back_link_container {
-}
-
-.back_to_categories {
-}

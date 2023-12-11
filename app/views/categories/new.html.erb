@@ -1,7 +1,9 @@
-<h3>New Category</h3>
+<div class="new_category_container">
+  <h3>New Category</h3>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<div class="back_link_container">
-  <%= link_to 'Back', @category.persisted? ? category_path(@category) : categories_path, class: 'back_to_category' %>
+  <div id="back_to_category">
+    <%= link_to 'Back', @category.persisted? ? category_path(@category) : categories_path %>
+  </div>
 </div>
