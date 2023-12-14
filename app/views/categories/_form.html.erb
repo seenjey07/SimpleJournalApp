@@ -6,7 +6,7 @@
       <%= form.text_field :name, :id => 'category_input' %>
     </div>
 
-      <%= form.submit "Create Category", :id => "create_category_button" %>
+      <%= form.submit :id => "category_button" %>
   </div>
 
   <% if @category.errors.any? %>

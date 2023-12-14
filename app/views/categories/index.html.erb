@@ -8,12 +8,12 @@
     <h3>Categories</h3>
 
     <% if @categories.empty? %>
-      <p>To start, create a New Category.</p>
+      <p class="opening_message">To start, create a New Category.</p>
     <% end %>
 
     <div class="categories_list">
       <% @categories.each do |category| %>
-        <li>
+        <li class="tasks_list">
           <%= link_to category.name, category_path(category), :id => "category_name" %>
           <div class="category_actions">
               <%= link_to 'Tasks Due Today', due_today_category_tasks_path(category), :id=>"due_tasks" %> |

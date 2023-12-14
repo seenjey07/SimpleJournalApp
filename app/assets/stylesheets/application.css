@@ -90,7 +90,7 @@ button {
   justify-self: center;
 }
 
-#create_category_button {
+#category_button {
   display: flex;
   margin: 0 auto;
   margin-top: 10px;
@@ -144,7 +144,8 @@ form {
 .login_form_container,
 .registration_form_container, 
 .new_category_container,
-.edit_category_container  {
+.edit_category_container,
+.tasks_in_categories {
   font-size: 10pt;
   font-weight: bold;
   border: 2px double white;
@@ -154,7 +155,8 @@ form {
 }
 
 .new_category_container,
-.edit_category_container {
+.edit_category_container,
+.tasks_in_categories {
   margin: 30px;
 }
 
@@ -187,8 +189,11 @@ form {
 }
 
 #back_to_category,
-.back_to_categories {
+.back_to_categories, 
+.back_link_container,
+.buttons_container {
   padding-left: 10px;
+  text-decoration: none;
 }
 
 .register_name {
@@ -273,16 +278,15 @@ form {
   display: flex;
   flex-direction: column;
   margin: 15px 0 15px 0;
-  padding: 10px 5px 20px 5px;
+  padding: 5px 5px 20px 5px;
   color: white;
   justify-content: center;
   align-items: center;
-  border: 1mm solid black;
-  height: 50%;
+  height: 65%;
   overflow: auto;
 }
 
-li {
+.tasks_list {
   list-style: none;
   padding: 2px;
 }
@@ -311,7 +315,7 @@ li {
 #edit_category,
 #due_tasks {
   font-size: 10pt;
-  color: darkmagenta;
+  color: rgb(163, 245, 108);
   padding-left: 1px;
   text-decoration: none;
 }
@@ -331,6 +335,8 @@ li {
   border-radius: 5px;
   text-decoration: none;
   font-weight: normal;
+  position: absolute;
+  left: 18%;
 }
 
 #new_category:hover {
@@ -346,3 +352,40 @@ li {
   color:yellow;
 }
 
+.opening_message {
+  text-align: center;
+  font-style: italic;
+  color: yellow;
+  font-weight:lighter;
+  font-size: 11pt;
+}
+
+.task_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+
+#edit_task,
+#delete_task {
+  font-size: 10pt;
+  padding-left: 1px;
+  text-decoration: none; 
+  display: flex;
+}
+
+#new_task {
+  font-size: 10pt;
+  padding-left: 1px;
+  text-decoration: none;
+  color: white;
+  padding-right: 10px;
+}
+
+#title,
+#description,
+#due_date {
+  margin: 0 auto;
+  padding: 1px 0 1px 0;
+}
