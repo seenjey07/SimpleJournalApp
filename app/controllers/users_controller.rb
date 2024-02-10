@@ -6,11 +6,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to categories_path, notice: 'Registration successful!'
+      redirect_to categories_path,    
+      flash[:notice] = 'Registration successful!'
     else
       render :new
     end
   end
+
+  def save_note
+    note_content = params[:note_content]
+    current_user.update(note_content: note_content)
+    puts "Note content saved: #{note_content}"
+    render json: { content: note_content }
+  end
+  
 
   private
     def user_params

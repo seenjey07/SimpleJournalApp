@@ -7,19 +7,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application" %>
     <%= javascript_importmap_tags %>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     </head>
 
   <body>
+
+  <div class="main-content">
+    <% flash.each do |key, value| %>
+      <div class="flash <%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+  
     <%= render 'layouts/header' %>
 
     <%= yield %>
-
-    <% flash.each do |key, value| %>
-      <div class="flash <%= key %>"><%= value %></div>
-    <% end %>
+  </div>
     
     <%= render 'layouts/footer' %>
   </body>

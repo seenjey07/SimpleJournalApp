@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       session[:user_username] = user.username
       session[:user_email] = user.email
       redirect_to categories_path(current_user)
+      flash[:notice] = 'Login successful.'
     else
       flash.now[:alert] = 'Invalid login details. Please try again.'
       render 'new'
@@ -20,6 +21,7 @@ class SessionsController < ApplicationController
     session[:user_username] = nil
     session[:user_email] = nil
     redirect_to root_path
+    flash[:notice] = 'You have been logged out. Login again.'
   end
 end
 
@@ -27,4 +29,3 @@ private
 def session_params
   params.permit(:username_or_email, :password, :authenticity_token, :commit)
 end
-

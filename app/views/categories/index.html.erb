@@ -29,12 +29,16 @@
     </div>
   </div>
 
-  <div class="notepad_container">
-    <h3>Your Notepad</h3>
-    <form>
-      <textarea class="notepad_textarea" placeholder="Write your thoughts here..."></textarea>
-      <button class="notepad_button">Save</button>
-    </form>
-   </div>
+<div class="notepad_container">
+  <h3>Your Notepad</h3>
+  <form data-turbo-frame="notepad">
+    <p id="notepad_text">Type your thoughts here...</p>
+    <textarea id="notepad"><%= current_user.note_content %></textarea>
+    <button id="saveNote">
+      <%= current_user.note_content.present? ? 'Update' : 'Save' %>
+    </button>
+  </form>
+</div>
+
 
 </div>

@@ -1,20 +1,25 @@
 <div class="tasks_in_categories">
   <h3><%= @category.name %></h3>
 
+  
     <div class="task_list">
       <% if @category.tasks.empty? %>
         <p class="opening_message">Create your first task.</p>
       <% end %>
     
       <% @category.tasks.each do |task| %>
-        <p class="title">Title: </p>
-        <p class="title_content"> <%= task.title %></p>
-        <p class="description">Description: </p>
-        <%= task.description %></p>
-        <p class="description_content"> id="due_date">Due Date: <%= task.due_date.strftime("%B %d, %Y, %A") %></p>
-
-        <%= link_to 'Edit', edit_category_task_path(@category, task), :id => "edit_task" %> |
-        <%= button_to 'Delete', category_task_path(@category, task), :method => :delete, :id => "delete_task" %>
+      <div class="each_task_container">
+        <p id="title">Title:</p>
+        <p id="title_content"><%= task.title %></p>
+        <p id="description">Description:</p>
+        <p id="description_content"><%= task.description %></p>
+        <p id="due_date">Due Date:</p>
+        <p id="date_of_due"><%= task.due_date.strftime("%B %d, %Y (%A)") %></p>
+    
+        <div class="tasks_buttons_container">
+          <%= button_to 'Edit', edit_category_task_path(@category, task), :id => "edit_task" %>|
+          <%= button_to 'Delete', category_task_path(@category, task), :method => :delete, :id => "delete_task" %>
+        </div>
       </div>
     <% end %>
 
@@ -22,4 +27,5 @@
         <%= link_to 'New Task', new_category_task_path(@category), :id => "new_task" %>
         <%= link_to 'Back', categories_path, :class => "back_to_categories" %>
       </div>
+  </div>
 </div>

@@ -1,3 +1,9 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 header {
   display: flex;
   justify-content: center;
@@ -19,18 +25,24 @@ img {
 }
 
 body {
-  margin: 0 auto;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   background-color: peru;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.main-content {
+  flex: 1;
+}
+
 .footer {
+  margin: 0;
   padding: 2px;
   font-size: 8pt;
   color: white;
   font-weight: bold;
-  position: absolute;
+  flex-shrink: 0;
+  position: relative;
   bottom: 0;
 }
 
@@ -40,6 +52,23 @@ button {
   cursor: pointer;
   color: blue;
   text-decoration: underline;
+}
+
+.flash {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 11pt;
+}
+
+.flash.notice {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.flash.alert {
+  background-color: #f44336; /* Red */
+  color: white;
 }
 
 .login_video_containers {
@@ -109,27 +138,47 @@ video {
 }
 
 .login_container,
-.registration_container {
-  margin: 50px auto;
-  width: fit-content;
+.registration_container,
+.due_tasks_container,
+.new_task_container {
   border: 2px solid white;
   border-radius: 10px;
-  padding: 7px;
   background-color: navajowhite;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   font-size: 11pt;
   box-shadow: wheat 0 0 4px 4px;
 }
 
 .registration_container {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 15px auto;
   padding: 5px;
   width: 400px;
-  height: 480px;
+  height: 483px;
+  justify-content: center;
+}
+
+.login_container {
+  margin: 50px auto;
+  height: 410px;
+  width: fit-content;
+  padding: 7px;
+  justify-content: start;
+}
+
+.due_tasks_container,
+.new_task_container {
+  margin: 25px auto;
+  height: 350px;
+  width: fit-content;
+  padding: 15px;
+  justify-content: start;
+}
+
+#login_text,
+#due_today_text {
+  padding-top: 30px;
 }
 
 form {
@@ -141,8 +190,16 @@ form {
   padding-bottom: 5px;
 }
 
-.login_form_container,
-.registration_form_container, 
+.login_form_container {
+  margin: 30px 20px 30px 20px;
+  font-size: 10pt;
+  font-weight: bold;
+  border: 2px double white;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.registration_form_container,
 .new_category_container,
 .edit_category_container,
 .tasks_in_categories {
@@ -179,21 +236,42 @@ form {
   margin: 3px;
   padding: 3px;
   font-size: 10pt;
+  text-align-last: center;
 }
 
-.register,
 .login {
   cursor: pointer;
   font-size: 10pt;
-  margin-top: 10pt;
+  margin-top: 5pt;
 }
 
-#back_to_category,
-.back_to_categories, 
+.register {
+  cursor: pointer;
+  font-size: 10pt;
+  margin-top: 15pt;
+}
+
+.back_to_categories,
 .back_link_container,
 .buttons_container {
   padding-left: 10px;
   text-decoration: none;
+  padding-top: 10px;
+}
+
+#back_to_category {
+  padding: 0;
+  text-decoration: none;
+  font-size: 10pt;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tasks_buttons_container {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .register_name {
@@ -221,7 +299,7 @@ form {
   transition: color 0.5s;
 }
 
-.logout:hover{
+.logout:hover {
   color: cornflowerblue;
 }
 
@@ -248,22 +326,25 @@ form {
   margin-top: 10px;
 }
 
-::placeholder {
-  color: black;
+#notepad_text {
+  font-size: 11pt;
+  font-family: "Cambria";
 }
 
-.notepad_textarea {
+#notepad {
   width: 85%;
   height: 250px;
-  font-family: 'Cambria';
+  font-family: "Cambria";
   font-size: 11pt;
   border-radius: 8px;
   margin: 5px;
   padding: 5px;
   background-color: goldenrod;
+  overflow: auto;
+  height: 250px;
 }
 
-.notepad_button {
+#saveNote {
   text-align: center;
   text-decoration: none;
   border: 1px solid black;
@@ -349,14 +430,14 @@ form {
 
 .error_explanation {
   font-weight: normal;
-  color:yellow;
+  color: yellow;
 }
 
 .opening_message {
   text-align: center;
   font-style: italic;
   color: yellow;
-  font-weight:lighter;
+  font-weight: lighter;
   font-size: 11pt;
 }
 
@@ -365,17 +446,21 @@ form {
   flex-direction: column;
   justify-content: left;
   align-items: center;
+  overflow-y: auto;
+  height: 100%;
 }
 
 #edit_task,
 #delete_task {
   font-size: 10pt;
   padding-left: 1px;
-  text-decoration: none; 
+  text-decoration: none;
   display: flex;
 }
 
-#new_task {
+#new_task,
+#edit_task,
+#delete_task {
   font-size: 10pt;
   padding-left: 1px;
   text-decoration: none;
@@ -383,9 +468,43 @@ form {
   padding-right: 10px;
 }
 
+#edit_task {
+  padding-right: 2px;
+}
+
+#new_task:hover,
+.back_to_categories:hover,
+#edit_task:hover,
+#delete_task:hover {
+  text-decoration: underline;
+}
+
+.each_task_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 0 20px 0 20px;
+  padding: 10px 15px 10px 15px;
+  margin: 10px auto;
+}
+
 #title,
 #description,
 #due_date {
-  margin: 0 auto;
-  padding: 1px 0 1px 0;
+  color: greenyellow;
+  justify-content: start;
+  padding: 0;
+  margin: 0;
+  padding-top: 10px;
+}
+
+#title_content,
+#description_content,
+#due_date_content {
+  padding-left: 5px;
+}
+
+#due_date {
+  margin-bottom: 5px;
 }

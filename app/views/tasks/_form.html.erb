@@ -1,5 +1,6 @@
-<%= form_with(model: [@category, @task], local: true, url: @task.persisted? ? category_task_path(@category, @task) : category_tasks_path(@category), action: @task.persisted? ? category_tasks_path(@category) : category_tasks_path(@category), data: {turbo: false}) do |form| %>
+<%# <%= form_with(model: [@category, @task], local: true, url: @task.persisted? ? category_task_path(@category, @task) : category_tasks_path(@category), action: @task.persisted? ? category_tasks_path(@category) : category_tasks_path(@category), data: {turbo: false}) do |form| %> 
 
+<%= form_with(model: [@category, @task], local: true) do |form| %>
   <div class="task_inputs_container">
     <div class="title_field">
       <strong><%= form.label :title %></strong>
