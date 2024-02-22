@@ -239,6 +239,17 @@ form {
   text-align-last: center;
 }
 
+.category_input {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  height: 12px;
+  margin: 3px;
+  padding: 3px;
+  font-size: 10pt;
+  text-align-last: center;
+}
+
 .login {
   cursor: pointer;
   font-size: 10pt;
@@ -497,6 +508,7 @@ form {
   padding: 0;
   margin: 0;
   padding-top: 10px;
+  border: none;
 }
 
 #title_content,
@@ -507,4 +519,25 @@ form {
 
 #due_date {
   margin-bottom: 5px;
+}
+
+.title_field,
+.description_field,
+.due_date_field {
+  display: flex;
+  margin-top: 5px;
+  padding: 3px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 9pt;
+}
+
+.submit_button {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  cursor: pointer;
 }
